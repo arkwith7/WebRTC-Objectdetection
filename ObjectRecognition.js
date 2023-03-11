@@ -28,12 +28,12 @@ const ObjectRecognition = () => {
           const [x, y, w, h] = prediction.bbox;
           ctx.beginPath();
           ctx.rect(x, y, w, h);
-          ctx.lineWidth = '4';
+          ctx.lineWidth = '2';
           ctx.strokeStyle = 'red';
+          ctx.fillStyle = 'red';
           ctx.stroke();
           ctx.font = '18px Arial';
-          ctx.fillStyle = 'red';
-          ctx.fillText(prediction.class, x, y - 5);
+          ctx.fillText(prediction.class, x + 5, y + 20);
         });
         requestAnimationFrame(detect);
       };
