@@ -102,87 +102,87 @@ const FreeFormTableForm = () => {
 
   return (
     <div className={classes.container}>
-      <form className={classes.formContainer} onSubmit={handleFormSubmit}>
-        <Typography variant="h6" className={classes.formTitle}>
-          Free Form
-        </Typography>
-        <TextField
-          className={classes.formField}
-          label="Name"
-          name="name"
-          value={formData.name || ''}
-          onChange={handleFormChange}
-        />
-        <TextField
-          className={classes.formField}
-          label="Email"
-          name="email"
-          value={formData.email || ''}
-          onChange={handleFormChange}
-        />
-        <Button type="submit" variant="contained" color="primary">
-          Add to Table
-        </Button>
-      </form>
-    <TableContainer component={Paper} className={classes.tableContainer}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {tableData.map((data, index) => (
-            <TableRow key={index}>
-              <TableCell>
-                <TextField
-                  name="name"
-                  value={data.name}
-                  onChange={(e) => handleTableChange(e, index)}
-                />
-              </TableCell>
-              <TableCell>
-                <TextField
-                  name="email"
-                  value={data.email}
-                  onChange={(e) => handleTableChange(e, index)}
-                />
-              </TableCell>
-              <TableCell>
-                <IconButton onClick={() => handleTableDelete(index)}>
-                  <DeleteIcon />
-                </IconButton>
-              </TableCell>
+      <div>
+        <form className={classes.formContainer} onSubmit={handleFormSubmit}>
+          <Typography variant="h6" className={classes.formTitle}>
+            Free Form
+          </Typography>
+          <TextField
+            className={classes.formField}
+            label="Name"
+            name="name"
+            value={formData.name || ''}
+            onChange={handleFormChange}
+          />
+          <TextField
+            className={classes.formField}
+            label="Email"
+            name="email"
+            value={formData.email || ''}
+            onChange={handleFormChange}
+          />
+          <Button type="submit" variant="contained" color="primary">
+            Add to Table
+          </Button>
+        </form>
+      </div>
+      <TableContainer component={Paper} className={classes.tableContainer}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell></TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <Button
-        className={classes.addButton}
-        variant="contained"
-        color="primary"
-        startIcon={<AddIcon />}
-        onClick={handleAddRow}
-      >
-        Add Row
-      </Button>
-      <Button
-        variant="contained"
-        color="secondary"
-        onClick={handleTableClear}
-      >
-        Clear Table
-      </Button>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleTableSubmit}
-      >
-        Submit Table
-      </Button>
-    </TableContainer>
-  </div>
+          </TableHead>
+          <TableBody>
+            {tableData.map((data, index) => (
+              <TableRow key={index}>
+                <TableCell>
+                  <TextField
+                    name="name"
+                    value={data.name}
+                    onChange={(e) => handleTableChange(e, index)}
+                  />
+                </TableCell>
+                <TableCell>
+                  <TextField
+                    name="email"
+                    value={data.email}
+                    onChange={(e) => handleTableChange(e, index)}
+                  />
+                </TableCell>
+                <TableCell>
+                  <IconButton onClick={() => handleTableDelete(index)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        <Button
+          className={classes.addButton}
+          variant="contained"
+          color="primary"
+          startIcon={<AddIcon />}
+          onClick={handleAddRow}
+        >
+          Add Row
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={handleTableClear}
+        >
+          Clear Table
+        </Button>
+        <Button variant="contained" color="primary" onClick={handleTableSubmit}>
+          Submit Table
+        </Button>
+      </TableContainer>
+    </div>
   );
-}
+};
+
+export default FreeFormTableForm;
